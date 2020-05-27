@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <div class="row">
+    <div *ngFor="let todo of todos" class="col-sm-6 col-md-3 sp">
+      <app-todo-card [todo]="todo"></app-todo-card>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-5">
+    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [(ngModel)]="pagination.currentPage"
+      [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+      nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    </pagination>
+  </div>
+</div>
+
+<!-- <div class="container mt-5">
+  <div class="tab-panel">
+    <tabset class="member-tabset">
+      <tab heading="Recent Todos">
+          <h1 class="mt-5" *ngIf="todos.recentToDos == null">No Recent Todos Yet ..</h1>
+        <div class="container mt-5" *ngIf="todos.recentToDos != null">
+          <h1>Recent Todos</h1>
+          <div class="row">
+            <div *ngFor="let todo of todos.recentToDos" class="col-sm-6 col-md-3 sp">
+              <app-todo-card [todo]="todo"></app-todo-card>
+            </div>
+          </div>
+        </div>
+      </tab>
+      <tab heading="Time Over Todos">
+        <h1 class="mt-5" *ngIf="todos.timeOverToDos == null">Time Over Todos ..</h1>
+        <div class="container mt-5" *ngIf="todos.timeOverToDos != null">
+          <h1>Time Over Todos</h1>
+          <div class="row">
+            <div *ngFor="let todo of todos.timeOverToDos" class="col-sm-6 col-md-3 sp">
+              <app-todo-card [todo]="todo"></app-todo-card>
+            </div>
+          </div>
+        </div>
+      </tab>
+    </tabset>
+  </div>
+</div> -->

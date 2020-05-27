@@ -1,0 +1,37 @@
+<div class="card text-center">
+  <i class="fa fa-2x far fa-times-circle fa-hover" (click)="deleteTodo(todo.id,$event) "></i>
+  <div class="card-img">
+    <img class="card-img-top img-responsive img-rounded" src="{{todo.photoUrl || '../../../assets/default.JPG'}}">
+  </div>
+  <div class="card-body" id="card">
+    <div class="time" style="font-size: 13px;">
+        <div class="row">
+          <div class="col-sm-6"> <i class="fa far fa-calendar"></i>
+            {{todo.dateTime | date: 'dd/MM/yyyy'}}
+          </div>
+          <div class="col-sm-6"> <i class="fa far fa-calendar"></i>
+            {{todo.dateTime | date: "shortTime"}}
+          </div>
+        </div>
+    </div>
+    <hr />
+    <p class="card-des">
+      {{todo.description | slice:-100}}
+    </p>
+  </div>
+  <hr />
+  <div class="card-footer text-muted">
+    <div class="row">
+      <div class="col-sm-4">
+        <i class="fa fa-2x fas fa-edit fa-hover" [routerLink]="['/todos/edit', todo.id]"></i>
+      </div>
+            <div class="col-sm-4">
+              <!-- <i class="fa fa-2x far fa-check-circle fa-hover"></i> -->
+            </div>
+      <div class="col-sm-4">
+        <i class="fa fas fa-2x fa-eye fa-hover" [routerLink]="['/todos/', todo.id]"></i>
+      </div>
+
+    </div>
+  </div>
+</div>

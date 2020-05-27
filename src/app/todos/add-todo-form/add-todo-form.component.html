@@ -1,0 +1,74 @@
+<div class="mt-5">
+  <div class="row ">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <form [formGroup]="addTodoform" (ngSubmit)="submit()">
+        <div class="form-group row">
+          <label for="" class="col-sm-2 col-form-label col-form-label-sm">Date</label>
+          <div class="col-sm-10">
+            <ejs-datetimepicker [ngClass]="{'is-invalid': addTodoform.get('datetime').errors 
+        && addTodoform.get('datetime').touched}" placeholder='Select a date and time' formControlName="datetime">
+            </ejs-datetimepicker>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <textarea [ngClass]="{'is-invalid': addTodoform.get('description').errors 
+        && addTodoform.get('description').touched}" class="form-control" placeholder="Description" type="text"
+              formControlName="description"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="" class="col-sm-2 col-form-label ">Images</label>
+          <div class="col-sm-10">
+            <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
+          </div>
+        </div>
+        <div class="row mt-3">
+
+
+          <div class="col-md-12" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+
+            <h3>Upload queue</h3>
+            <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width="50%">Name</th>
+                  <th>Size</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of uploader.queue">
+                  <td><strong>{{ item?.file?.name }}</strong></td>
+                  <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div>
+              <div>
+                Queue progress:
+                <div class="progress mb-4">
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()"
+                [disabled]="!uploader.queue.length">
+                <span class="fa fa-trash"></span> Remove
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" [disabled]="!addTodoform.valid">Add</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

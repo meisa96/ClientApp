@@ -1,0 +1,15 @@
+    <div  class="dropdown ml-5" dropdown>
+      <a class="dropdown-toggle text-light" dropdownToggle >
+        <span class="badge badge-pill badge-danger"
+          *ngIf="(todos$ | async)?.length>0">{{(todos$ | async)?.length}}</span>
+          Missing Todos
+      </a>
+      <div class="dropdown-menu mt-3" *dropdownMenu >
+        <a *ngFor="let todo of todos$ | async" class="dropdown-item" [routerLink]="['/todos/', todo.id]">
+          
+        {{todo.dateTime | date: "shortDate"}} -
+        {{todo.dateTime | date: "shortTime"}}
+      
+        </a>
+      </div>
+    </div>
