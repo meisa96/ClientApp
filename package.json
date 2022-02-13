@@ -24,7 +24,7 @@
     "@ngrx/effects": "^9.1.2",
     "@ngrx/store": "^9.1.2",
     "@syncfusion/ej2-angular-calendars": "^18.1.53",
-    "ajv": "^6.12.2",
+    "ajv": "^6.12.3",
     "alertifyjs": "^1.13.1",
     "bootstrap": "^4.5.0",
     "bootswatch": "^4.5.0",
